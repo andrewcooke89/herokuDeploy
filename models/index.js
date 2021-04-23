@@ -9,18 +9,24 @@ const db = {};
 
 
 
-const sequelize = new Sequelize(process.env.DATABASE_URL + 'sslmode=require', {
-  host: 'localhost',
-  dialect: 'postgres',
-  logging: false,
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000
-  },
-  operatorsAliases: false // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
-});
+const sequelize = new Sequelize(process.env.DATABASE_URL ,{
+  // host: 'localhost',
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    }
+  }
+  // logging: false,
+  // pool: {
+  //   max: 5,
+  //   min: 0,
+  //   acquire: 30000,
+  //   idle: 10000
+  // },
+  // operatorsAliases: false // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
+}
+);
 
 const files = fs.readdirSync(__dirname);
 
