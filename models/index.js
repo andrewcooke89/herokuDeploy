@@ -6,18 +6,7 @@ const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const db = {};
 
-const sequelize = new Sequelize('chat_server_dev', 'andrewcooke', '', {
-  host: 'localhost',
-  dialect: 'postgres',
-  logging: false,
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000
-  },
-  operatorsAliases: false // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
-});
+const sequelize = new Sequelize(process.env.DATABASE_URL);
 
 const files = fs.readdirSync(__dirname);
 
