@@ -13,6 +13,7 @@ app.use(router.routes());
 
 
 (async () =>{
+  console.log(process.env.DATABASE_URL)
   await db.sequelize.sync();
   const port = process.env.PORT;
   app.listen(port);
