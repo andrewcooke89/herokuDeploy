@@ -4,9 +4,23 @@ const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
+require('dotenv').config();
 const db = {};
 
-const sequelize = new Sequelize('postgres://bozamjlofnfxhb:72f22fa3c82a20eb97f757b5b6b177c3efe3770abd04842269b03fb69661ea73@ec2-54-235-108-217.compute-1.amazonaws.com:5432/d9duaceqjk6rba');
+
+
+const sequelize = new Sequelize(process.env.DATABSE_URL, {
+  host: 'localhost',
+  dialect: 'postgres',
+  logging: false,
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  },
+  operatorsAliases: false // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
+});
 
 const files = fs.readdirSync(__dirname);
 

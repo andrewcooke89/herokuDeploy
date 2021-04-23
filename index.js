@@ -3,6 +3,7 @@
 const Koa = require('koa');
 const app = new Koa();
 const bodyParser = require('koa-bodyparser');
+require('dotenv').config();
 
 const db = require('./models');
 const router = require('./router.js');
