@@ -10,6 +10,7 @@ const router = require('./router.js');
 app.use(bodyParser());
 app.use(router.routes());
 
+
 (async () =>{
   await db.sequelize.sync();
   const port = 3000;
