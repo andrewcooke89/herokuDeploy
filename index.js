@@ -13,8 +13,14 @@ app.use(router.routes());
 
 
 (async () =>{
+  
   console.log(process.env.DATABASE_URL)
-  await db.sequelize.sync();
+  try {
+    await db.sequelize.sync();
+  } catch (err) {
+    console.log(err)
+  }
+
   const port = process.env.PORT;
   app.listen(port);
   console.log(`Server listening on port ${port}`); // eslint-disable-line no-console
