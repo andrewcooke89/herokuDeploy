@@ -14,7 +14,7 @@ app.use(router.routes());
 
 (async () =>{
   
-  console.log(process.env.DATABASE_URL)
+  console.log(process.env.PORT)
   try {
     await db.sequelize.sync();
   } catch (err) {
