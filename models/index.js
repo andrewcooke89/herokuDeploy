@@ -6,7 +6,7 @@ const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const db = {};
 
-const sequelize = new Sequelize(process.env.DATABASE_URL);
+const sequelize = new Sequelize('postgres://bozamjlofnfxhb:72f22fa3c82a20eb97f757b5b6b177c3efe3770abd04842269b03fb69661ea73@ec2-54-235-108-217.compute-1.amazonaws.com:5432/d9duaceqjk6rba');
 
 const files = fs.readdirSync(__dirname);
 
